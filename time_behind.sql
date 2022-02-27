@@ -10,7 +10,8 @@ FROM (
 		AS total_time 
 		FROM Entries 
 		LEFT JOIN Runs 
-		ON (Entries.id = Runs.entry_id) 
+		ON (Entries.id = Runs.entry_id)
+		WHERE runs_count = 2
 		GROUP BY Entries.id
 	) AS FinalRanks
 	LEFT JOIN Athletes
