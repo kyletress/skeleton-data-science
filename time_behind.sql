@@ -20,7 +20,7 @@ WHERE timesheet_id = 29
 ORDER BY status, rank, total_time ASC, bib ASC
 
 /* US ATHLETES */
-SELECT first_name, last_name, time_behind_1, time_behind_3, time_behind_6 
+SELECT first_name, last_name, TRUNC(time_behind_1/100.0,2), TRUNC(time_behind_3/100.0,2), TRUNC(time_behind_6/100.0,2) 
 FROM (
 	SELECT first_name, last_name, country_code, total_time - FIRST_VALUE(total_time)
 	OVER (PARTITION BY runs_count ORDER BY total_time ASC) AS time_behind_1,
